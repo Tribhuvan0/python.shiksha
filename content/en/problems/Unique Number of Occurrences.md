@@ -12,12 +12,58 @@ weight: 2
 
 Here we will look at two ways to check if the occurence of every element is unique in the array
 
-1. Using element Counting
+The problem can be found out at https://leetcode.com/problems/unique-number-of-occurrences/ this link.
+
+1. Brute force approach (Using two for loops)
+1. Using set
 2. Using `Counter()`
 
-## Approach 1: Brute force approach or element counting
+## Approach 1: Brute force approach
+In this approach we will be using two `for` loops. We will iterate from starting index to last index and see if every number
+is present or not and will store its frequency in another array. And after this iteration is done we will simply check new array
+for any duplicate value.
 
-The problem can be found out at https://leetcode.com/problems/unique-number-of-occurrences/ this link. 
+```python
+    class Solution
+     def uniqueOccurrences(self, arr: List[int]) -> bool: 
+     n = len(arr)
+     frequencyArr = [0]*(n + 1);
+ 
+    # For counting the frequency of each element
+    for i in range(1,n+1):
+        for j in range(0,n):
+            if (arr[j] == i):
+                frequencyArr[i - 1]+=1;
+ 
+    # Checking if frequency array contains any duplicate
+    # or not
+    for i in range(0, n):
+        for j in range(0, n):
+            if (i == j or frequencyArr[i] == 0):
+                continue;
+            if (frequencyArr[i] == frequencyArr[j]):
+ 
+                # If any duplicate frequency then return
+                # false
+                return False;
+     
+    # If no duplicate frequency found, then return true
+    return True;
+```
+Second time when we check the frequency array for dupllicates then we check `i == j or frequency[i] == 0` because for i == j, the value of 
+frequency[i] and frequency[j] will always be equal hence by using this condition we handle that case.
+    
+### Complexity
+
+**Time Complexity is `O(n^2)`**
+
+Where `n` is the length of the array.
+
+**Space Complexity is `O(n)`**
+
+
+## Approach 2: Element counting
+
 
 We will discuss two approaches to solve this problem. Initially we will start with brute force approach. 
 
@@ -50,7 +96,7 @@ set formed by elements of count. If there is a difference we will return false e
 
 ### Complexity
 
-**Time Complexity is `O(n^2)`**
+**Time Complexity is `O(n)`**
 
 Where `n` is the length of the array.
 
@@ -128,4 +174,4 @@ Where `n` is the length of the array.
 
 In this Python tutorial, we learnt different ways to **to check unique occurence of values in an array.**
 
-Prefer using dictionary based method(counter mehtod) as here time complexity is better.
+Prefer using dictionary based method(counter mehtod) or set method as both have better time complexity.
