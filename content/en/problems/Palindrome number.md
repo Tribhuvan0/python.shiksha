@@ -103,6 +103,14 @@ in case if the digit is of odd length, then compare num and rev//10, if both are
 		 
 	    return True if (x == result or x == result // 10) else False 
 ```
+### Complexity
+
+**Time Complexity is `O(n)`**
+
+Where `n` is the length of integer.
+
+In last case the runtime of this approach will be better as compared to other as in case if the integer is very large, in that case this approach
+will run only for half of the length of integer. In both of the above approaches full integer is iterated.
 
 ## Summary
 
