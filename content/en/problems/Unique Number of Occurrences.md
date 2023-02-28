@@ -15,8 +15,8 @@ Here we will look at two ways to check if the occurence of every element is uniq
 The problem can be found out at https://leetcode.com/problems/unique-number-of-occurrences/ this link.
 
 1. Brute force approach (Using two for loops)
-1. Using set
-2. Using `Counter()`
+2. Using set
+3. Using `Counter()`
 
 ## Approach 1: Brute force approach
 In this approach we will be using two `for` loops. We will iterate from starting index to last index and see if every number
@@ -103,7 +103,7 @@ Where `n` is the length of the array.
 **Space Complexity is `O(n)`**
 
 
-## Approach 2: Using `Counter()`.
+## Approach 3: Using `Counter()`.
 
 Instead of two `for` loops we can use Python built in function `Counter()` which is part of `collections`.
 
