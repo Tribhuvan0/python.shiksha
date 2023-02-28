@@ -10,7 +10,7 @@ type: docs
 weight: 2
 ---
 
-There are two ways to check if two strings are anagrams or not in Python without using sorting. 
+Here we will look at two ways to check if the occurence of every element is unique in the array
 
 1. Using element Counting
 2. Using `Counter()`
