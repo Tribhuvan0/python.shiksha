@@ -20,35 +20,31 @@ The problem can be found out at https://leetcode.com/problems/unique-number-of-o
 
 ## Approach 1: Brute force approach
 In this approach we will be using two `for` loops. We will iterate from starting index to last index and see if every number
-is present or not and will store its frequency in another array. And after this iteration is done we will simply check new array
-for any duplicate value.
+is present or not and will store its frequency in one dictionary, and then we will store the count of frequencies of elements in 
+another dictionary. If count of occurence becomes twice then the bool becomes false and return it.
 
 ```python
-    class Solution
-     def uniqueOccurrences(self, arr: List[int]) -> bool: 
-     n = len(arr)
-     frequencyArr = [0]*(n + 1);
- 
-    # For counting the frequency of each element
-    for i in range(1,n+1):
-        for j in range(0,n):
-            if (arr[j] == i):
-                frequencyArr[i - 1]+=1;
- 
-    # Checking if frequency array contains any duplicate
-    # or not
-    for i in range(0, n):
-        for j in range(0, n):
-            if (i == j or frequencyArr[i] == 0):
-                continue;
-            if (frequencyArr[i] == frequencyArr[j]):
- 
-                # If any duplicate frequency then return
-                # false
-                return False;
-     
-    # If no duplicate frequency found, then return true
-    return True;
+    class Solution:
+    def uniqueOccurrences(self, arr: List[int]) -> bool:
+        freq = {}
+        freq2={}
+        for i in arr:
+            if i in freq:
+                freq[i]+=1
+            else:
+                freq[i]=1
+        for key,values in freq.items():
+            if values in freq2:
+                freq2[values]+=1
+            else:
+                freq2[values]=1 
+                
+        flag = True
+        for key,values in freq2.items():
+            if (values!=1):
+                flag = False
+        
+        return flag
 ```
 Second time when we check the frequency array for dupllicates then we check `i == j or frequency[i] == 0` because for i == j, the value of 
 frequency[i] and frequency[j] will always be equal hence by using this condition we handle that case.
